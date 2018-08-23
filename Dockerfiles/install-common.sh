@@ -20,7 +20,7 @@ groupadd -r tensorflow_cc
 useradd --no-log-init -r -m -g tensorflow_cc tensorflow_cc
 chmod -R go+rX /tensorflow_cc
 function unpriv-run() {
-    sudo --preserve-env=LD_LIBRARY_PATH -H -u tensorflow_cc "$@"
+    sudo -E -H -u tensorflow_cc "$@"
 }
 
 ### build and install tensorflow_cc ###
