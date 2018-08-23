@@ -38,7 +38,7 @@ else
 fi
 
 # build and install
-unpriv-run make
+unpriv-run make -j$(nproc)
 rm -rf /home/tensorflow_cc/.cache
 make install
 cd "$cwd"
@@ -51,7 +51,7 @@ chown -R tensorflow_cc:tensorflow_cc tensorflow_cc/example/build
 chmod go+rX tensorflow_cc/example/build
 cd tensorflow_cc/example/build
 unpriv-run cmake ..
-unpriv-run make
+unpriv-run make -j$(nproc)
 unpriv-run ./example
 
 ### delete the unprivileged user
